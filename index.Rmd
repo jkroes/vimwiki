@@ -1,8 +1,20 @@
 ---
-title: "A Work in Progress"
+title: An Exercise in (F)utility
 ---
 
-This website is meant as a reference for my own programming needs. Even though
-its public, it'll before it's ready or useful for the public sphere of R, bash,
-Mac, etc., users. I'm just trying to organize a maze of previous notes on what
-I've learned while using these programs.
+[Vim](vim)
+[Git](git)
+[R](r)
+[Python](python)
+[WSL](wsl)
+
+# Loose notes
+
+elinks
+https://browsersync.io
+https://github.com/turbio/bracey.vim
+https://github.com/greyblake/vim-preview
+
+
+
+
