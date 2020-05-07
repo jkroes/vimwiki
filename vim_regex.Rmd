@@ -1,0 +1,17 @@
+---
+title: "Vim regex"
+---
+
+Replace vimwiki titles with markdown titles interactively
+```
+:%s/\(=\+\)\( .* \)\(=\+\)/\=repeat('#', len(submatch(1))) . submatch(2)/
+```
+On a line of only dashes, type Vr=
+```
+:g/^-\+$/norm Vr=
+```
+
+
+
+
+

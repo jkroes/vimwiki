@@ -1,0 +1,27 @@
+---
+title: "Vim"
+---
+
+# Topics
+
+[Options](vim_options)
+
+[Mapping](vim_mapping)
+
+[Regex](vim_regex)
+
+[Excerpts from init.vim](vim_edits_to_init)
+
+[Spacevim](vim_spacevim)
+
+[Terminal colors](vim_term_colors)
+
+# Packages
+
+[vimwiki wiki](https://vimwiki.github.io/vimwikiwiki/)
+
+[neoterm](vim_neoterm)
+
+# Resources
+
+[vimcasts](http://vimcasts.org)

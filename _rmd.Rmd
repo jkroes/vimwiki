@@ -1,0 +1,38 @@
+---
+title: "R Markdown"
+author: "Justin Lawrence Kroes"
+date: "July 12, 2016"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Rmarkdown v2]: <http://rmarkdown.rstudio.com/>
+[Reddit]: <https://www.reddit.com/r/rstats/comments/3xizqm/in_r_markdown_is_there_a_way_to_refer_to_a_script/>
+[CRAN page for R markdown]: <https://cran.r-project.org/web/packages/rmarkdown/rmarkdown.pdf>
+
+# Introduction
+
+What is R Markdown? 
+
+> At it’s core an R Markdown format consists of:
+>
+> 1. A set of knitr options that govern how Rmd is converted to markdown.
+> 2. A set of pandoc options that govern how markdown is converted to the final output format (e.g. HTML).
+> 3. Some optional flags and filters (typically used to control handling of supporting files).
+
+First, note that many topics can be explored in tandem with the resources below by visiting the [CRAN page for R markdown][].
+
+The links visible via [Rmarkdown v2][] that are relvant for future readings are listed below:
+
+* Interactive Documents with Shiny, HTML Widgets, and Shiny Widgets describe how to make R documents interactive via Shiny
+* Compiling Reports from R Scripts details how to compile documents from Rmd files without using R Markdown syntax
+* Document Output Formats gives more details on compiling to specific formats. Note that I have already read the HTML page. It serves as a useful reminder on, among other things, shared options, extending YAML headers to include extra pandoc arguments, Rmd extensions (R Markdown is basically pandoc markdown with some add-ons), custom templates, and **external dependencies**. This latter may not be what you think (sourcing other scripts, for example). In this case, see [Reddit][]
+* **R Markdown Websites** (creating websites from multiple Rmd files)
+* Pandoc Markdown is a resource of secondary importance.
+* The knitr package is a resource of secondary importance. 
+* Other links of future interst include Document Templates, Creating New Formats, and Parameterized Reports.
+* Formats > GitHub Document, **Tufte Handouts**, and R Markdown Notebooks
+* Articles > Embedding RData files in R Markdown files for more reproducible analyses
+
+Another package that may be of general interest is formatR. 

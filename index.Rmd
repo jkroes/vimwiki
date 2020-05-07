@@ -1,0 +1,8 @@
+---
+title: "A Work in Progress"
+---
+
+This website is meant as a reference for my own programming needs. Even though
+its public, it'll before it's ready or useful for the public sphere of R, bash,
+Mac, etc., users. I'm just trying to organize a maze of previous notes on what
+I've learned while using these programs.

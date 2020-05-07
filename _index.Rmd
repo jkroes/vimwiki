@@ -1,0 +1,20 @@
+---
+title: An Exercise in (F)utility
+---
+
+[Vim](vim)
+[Git](git)
+[R](r)
+[Python](python)
+[WSL](wsl)
+
+# Loose notes
+
+elinks
+https://browsersync.io
+https://github.com/turbio/bracey.vim
+https://github.com/greyblake/vim-preview
+
+
+
+

@@ -1,0 +1,69 @@
+# Provide a suggested URL path when publishing website
+#name: "my-website"
+output_dir: "docs"
+output:
+  html_document:
+    fig_caption: yes
+    number_sections: false
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    # In future, add to individual Rmd files to avoid putting option on each page
+    theme: readable # simplex is also nice
+    # In case Github Pages doesn't use the site_libs. Haven't tested this. Just a hypothesis.
+    # self_contained: FALSE
+    highlight: pygments
+    css: styles.css
+
+# Override the default behavior for which files are copied into output_dir
+# R source and config, _*, and .* files are excluded by default
+#include: ["import.R"]
+#exclude: ["docs.txt", "*.csv"]
+
+# navbar:
+  # title: "An Exercise in (F)Utility"
+  # # Choose between a default or inverse navbar
+  # type: inverse
+  # # Align navigational items to the left or right of the browser
+  # right:
+    # # Include menus on the navigation bar
+    # - text: "R"
+      # menu:
+          # - text: "ggplot2"
+            # href: ggplot.html
+        # # Menus can have internal headings (text without href)
+        # - text: "Rmarkdown"
+          # href: Rmd.html
+        # # Menus can have separators
+        # #- text: "--------"
+        # - text: "Rmd Bibliographies"
+          # href: BibAndCite.html
+# #  left:
+# #    - text: "About"
+# #      href: about.html
+
+
+# Creating custom formats:
+# http://rmarkdown.rstudio.com/developer_custom_formats.html
+
+# Other custom formats (downloadable from CRAN or GitHub)
+#output: tufte::tufte_html
+#output: rmdformats::material
+#output: rmdformats::readthedown
+#output: rmdformats::html_clean
+#output: rmdformats:html_docco
+
+# Future topics:
+  # Read the CRAN manual for info not given on Rmarkdown website
+  # Read Cheat Sheet
+  # Read Reference Guide (sections on markdown syntax, knitr chunks, and pandoc options)
+  # Shared R scripts
+  # Rmd partials
+  # Site navigation
+    # icons
+    # _navbar.html (write your own html-based navbar)
+    # Bootstrap documentation on navbar
+  # html generation (including widgets)
+  # htmltools (custom html generation). Need to decide if GH Pages can host a dynamic webpage.
+
+# Source: http://rmarkdown.rstudio.com/rmarkdown_websites.html#site_navigation
