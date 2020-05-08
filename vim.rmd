@@ -2,6 +2,9 @@
 title: "Vim"
 ---
 
+[init.vim archive](vfile:vim_init_archive.vim)
+
+
 # Topics
 
 [Options](vim_options)
@@ -9,6 +12,8 @@ title: "Vim"
 [Mapping](vim_mapping)
 
 [Regex](vim_regex)
+
+!!!!! I think I accidentally deleted some notes from below
 
 [Excerpts from init.vim](vim_edits_to_init)
 
@@ -18,7 +23,9 @@ title: "Vim"
 
 # Packages
 
-[vimwiki wiki](https://vimwiki.github.io/vimwikiwiki/)
+[ranger.vim](vim_ranger)
+
+[Vimwiki](vim_vimwiki)
 
 [neoterm](vim_neoterm)
 

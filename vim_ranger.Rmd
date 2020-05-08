@@ -1,0 +1,76 @@
+---
+title: "ranger.vim"
+---
+
+# Notes
+
+# Source code
+
+The package is simple enough. The commands exposed by the package simply set
+global variables before calling s:Ranger with a path spec. s:Ranger seems to
+call a buffer layout command (edit, split, etc.) with a path that is often (if
+not always) the directory of the current file, `expand('%:p:h')`. In this event,
+netrw would normally be called. However, ranger is always called. This is done
+through an autocmd:
+
+```
+autocmd BufEnter * silent call s:RangerMagic(expand("<amatch>"))
+```
+
+Notice that this is an autocmd for any entered buffers. When s:Ranger calls the
+buffer layout command, this triggers the autocommand. Whatever pattern matches
+is expanded to its full path and passed to RangerMagic. This is the starting
+point for opening ranger instead of netrw and doing something with whatever is
+selected within ranger.
+
+If the path isn't a directory, RangerMagic returns. If netrw was called
+instead of a ranger command, the edit command is chosen. A temporary file is
+made. A flag (l:choose_arg) is set to 'choosedir' for the CD commands and
+'choosefiles' otherwise. These are ranger args. Both write to a targetfile. The
+former writes the last visited directory when ranger exits, the latter one or
+more selected files when ranger exits--which also happens when a file is opened
+from within ranger.  Using printf, the command line options to ranger are built
+such that the tempfile is this targetfile and ranger opens at the aforementioned
+path. Then one of two functions is called depending on whether you're using vim
+or neovim.
+
+RangerNVim calls termopen to spawn the ranger process with the options passed
+from RangerMagic, then starts insert mode. A dict is passed to termopen as well
+with the name and on_exit fields. The latter is described in |jobstart|. It is
+invoked upon terminal process (ranger) exit. The callback likely deletes the
+ranger buffer and/or window--I skimmed this--and calls HandleRangerOutput.
+
+HandleRangerOutput reads the tempfile contents into a list of lines in the file.
+If the file is empty (no files or directory were selected), then return is
+called, which effectively ends the chain of logic here and returns control to
+the user. However, an extra step is executed if running Vim and the edit layout
+command was specified. This likely has something to do with the differences in
+how ranger was spawned between RangerVim and RangerNvim, since vim can't call
+termopen to spawn a Neovim terminal. Finally, if g:ranger_command
+exists--i.e., when using RangerInsert, RangerAppend, RangerLCD, and
+RangerCD--RunCommand is called. Otherwise OpenFile is called. Both are the
+endpoints of the plugin.
+
+For RunCommand: If using Ranger[L]CD, then (l)cd into the directory read from the
+tempfile (a:names[0]). If using RangerInsert or RangerAppend (g:ranger_command
+== "action"), the filenames specified are modified to be relative to pwd, or
+your home dir, or root (i.e., an absolute path), whichever matches first. The
+list is converted to a string with newlines between the filenames, and those are
+inserted or appended into the buffer depending on which Ranger command was called.
+
+For OpenFile: The layout command is called again (since ranger was opened using
+the layout command, but the buffer/window was deleted) but this time it is used
+to open each of the files in the list obtained from the tempfile. This may fail
+for some files silently within the try-catch construct. Note that,
+interestingly, `doau BufRead` is invoked after reading each file. I wonder if
+opening these files somehow skips events that would normally skip autocommands.
+More likely, the filenames passed to the layout command may not match the
+patterns specified by any BufRead autocmds--filepaths can come in many forms due
+to the use of ., .., and ~/. I wonder if any other events should be considered
+for `doau` as well?
+
+TODO: Research autocmds, events and event order, and how different file patterns
+affect them.
+
+
+

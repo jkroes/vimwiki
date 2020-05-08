@@ -1,0 +1,14 @@
+---
+title: "Vimwiki"
+---
+
+Mappings
+
+n:enter -> create link
+n:enter -> follow link
+n:backsapce -> jump back
+<leader><n>vw -> open index of the n-th wiki
+<leader><n>vt -> open in new tab
+
+
+[vimwiki wiki](https://vimwiki.github.io/vimwikiwiki/)
