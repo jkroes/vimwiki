@@ -13,6 +13,7 @@ for flags and options that change e.g. setting vs getting values.
 
 ## Getting help
 
+```
 git help                Show git flags and common subcommands
 git help help           Help for help
 git help -g             *LIST HELP GUIDES*
@@ -23,6 +24,7 @@ man git-<command>       Show help for <command>
 git <command> -h        Abbreviated <command> help
 git <command> --help-all        Show hidden options if they exist, such as git
                                 init --separate-git-dir
+```
 
 If using fish shell, type "git help " (with the space) then tab
 
