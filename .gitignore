@@ -1,3 +1,7 @@
+# non-HTML files in the website dir
+/docs/
+!/docs/*.html
+
 # macOS Desktop Services
 .DS_Store
 
