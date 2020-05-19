@@ -13,10 +13,6 @@ title: "Vim"
 
 [Regex](vim_regex)
 
-!!!!! I think I accidentally deleted some notes from below
-
-[Excerpts from init.vim](vim_edits_to_init)
-
 [Spacevim](vim_spacevim)
 
 [Terminal colors](vim_term_colors)

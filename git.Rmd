@@ -12,33 +12,36 @@ for flags and options that change e.g. setting vs getting values.
 ## Getting help
 
 ```
-git help                Show git flags and common subcommands
-git help help           Help for help
-git help -g             *LIST HELP GUIDES*
-git help git            All subcommands and help for git command
-git help <command>      Show help for <command>
-git <command> --help    Show help for <command>
-man git-<command>       Show help for <command>
-git <command> -h        Abbreviated <command> help
-git <command> --help-all        Show hidden options if they exist, such as git
-                                init --separate-git-dir
+git help help                   Help for help
+git help -g                     Help guides
+git help                        Common subcommands
+git help git                    All subcommands and help for git command
+git help <command>              <command> help
+git <command> --help
+man git-<command>
+git <command> -h                Abbreviated <command> help
+git <command> --help-all        <command> help, plus hidden options
+                                such as git init --separate-git-dir
 ```
 
-If using fish shell, type "git help " (with the space) then tab
+If using fish shell, type `git help ` (with the space) then tab for completion
+or C-s for filtering completion items.
 
 ## Configuration
 
+```
 git config <option> <value>     Set <option> to <value>
 git config <option>             Get value of <option>
 git config -l                   Get value of all options
     --show-origin               Show source of each listed option's value
 
 git config --global alias.co checkout               Alias a git command
-git config --global alias.unstage 'reset HEAD --'   And another
-git config --global alias.visual '!gitk'        External commands require "!"
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.visual '!gitk'    External commands require "!"
+```
 
 ## Log
-
+```
 git log                 Commit history
     -p                  Show patch introduced by each commit
     --stat              Show stats about # of lines changed in each file
@@ -71,12 +74,14 @@ git log                 Commit history
                             <branch1>. Can be used with remote-tracking branches
                             to examine work before merging it into a branch.
 
+```
+
 ### Example
 
-`git log --oneline --graph --all`
-    Visualize your git history w/ branches
+`git log --oneline --graph --all`   Visualize your git history w/ branches
 
 ### --pretty format specs
+```
 format:<string> form of <format>
     <string> may contain literal characters, formatting-, and/or commit-based
     placeholders
@@ -94,6 +99,7 @@ format:<string> form of <format>
         %cr: commiter date, relative
         %s: subject
         %b: body
+```
 
 ## Diff
 
@@ -132,15 +138,22 @@ git init <dir>   Initialize a new repository in <dir>
 
 ## Add
 
-git add <file>    Track or stage changes in <file>
-git add -A        Track or stage changes for all files
+git add <file>      Track or stage changes in <file>
+git add -A          Track or stage changes for all files
+got add -i          Interactive add.
+    > a             Add untracked files.
 
 ## Rm
 
 git rm <file>       Stage file for untracking and deletion. File globbing can be
                     used in <file>.
     -f              Forcing needed when file is modified or staged
-    --cached        Untrack but don't delete file
+    --cached        Untrack but don't delete file from disk (e.g., if you forgot
+                    to add something to your .gitignore). In other words, remove
+                    the file from the index. The file will now be shown as
+                    untracked (and deleted if it was previously committed).
+
+git rm -r <dir>     Remote directory <dir>
 
 ## Mv
 
@@ -157,7 +170,7 @@ git commit      Record the index in the .git repository
 
 ## Reset
 
-git reset [<paths>]     Unstage <paths> if specified, else reset the index
+git reset HEAD [<paths>]     Unstage <paths> but keep modifications
 
 ## Remote
 

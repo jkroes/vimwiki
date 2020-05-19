@@ -4,6 +4,8 @@ title: An Exercise in (F)utility
 
 [Vim](vim)
 
+[Ranger](ranger)
+
 [Git](git)
 
 [R](r)
@@ -11,6 +13,81 @@ title: An Exercise in (F)utility
 [Python](python)
 
 [WSL](wsl)
+
+# TODO
+
+I think I deleted my todo list by accidend on 5/15/20... Fuck it
+Find the excellent lsp viml completion package whatever it was
+
+
+## Personal
+
+Order tests from sutter
+Ask about decreased student loan payments (before covid-19 deferment began)
+Chair should ship on 22nd and arrive on 27th
+
+## Ranger
+
+Improve custom <cr>. Currently it works for files, but it should call move
+right=1 for directories. This should be possible:
+map <cr> eval <python-expr>,
+where the Python expression is an if-else that tests the object type and either
+calls the Python move method of the Actions class defined in
+ranger/ranger/core/actions.py or else executes a shell command.
+
+Modify the source code of ranger.vim such that it uses a single function instead
+of RangerEdit, RangerSplit, etc., and instead defines shortcuts in rc.conf, as I
+have already done. This way you can spin up a temporary terminal that already
+calls ranger, rather than having to toggle a terminal, enter ranger, potentially
+exit the terminal window. In other words, so you don't have to rely on
+unreliable terminal window toggling behavior.
+
+## Neoterm
+
+Toggling seems to simply delete the terminal window, rather than the terminal
+buffer. Instead, it should return to the previous buffer if the behavior of
+neoterm is to open a terminal buffer in the current window. Obviously, with
+splits this doesn't matter. But you don't always want new splits, you just want
+to swap out the buffer for a terminal temporarily, unless you're using the
+terminal to open a file in that window. It may be that there are neoterm
+settings you can tweak to make this happen.
+
+## Floating terminals
+
+These could be a solution to neoterm's current bad behavior. And possibly a
+replacement for ranger.vim:
+https://github.com/Kraust/floater.nvim
+https://www.reddit.com/r/neovim/comments/di41cm/a_floating_terminal_with_borderpadding/
+https://github.com/voldikss/vim-floaterm (see ranger support)
+https://github.com/kevinhwang91/rnvimr
+https://github.com/Lokaltog/neoranger (simple script that seems to store
+previous buffer, like I'm hoping for neoterm)
+
+Some of the above were provided by https://github.com/ranger/ranger/wiki/Integration-with-other-programs
+
+# LSP
+
+https://langserver.org
+https://www.reddit.com/r/vim/comments/b33lc1/a_guide_to_lsp_auto_completion_in_vim/
+https://www.kieranbamforth.me/post/vim-lsp
+Compare vim-lsp to coc.nvim to nvim-lsp to LanguageClient-neovim
+vimscript https://github.com/iamcco/vim-language-server
+    - Works with coc.nvim or with the other lsp client packages
+R
+    https://github.com/REditorSupport/languageserver
+    https://github.com/neoclide/coc-r-lsp
+    You could disable completion and rely on ncm-R for completion while still
+    using an lsp server; however, you may need to disable nvim-r. But some of
+    the nvim-r plugin should be replaceable with neoterm and the lsp
+
+## Other
+
+Learn how to use less for man pages
+Learn how to navigate vim help
+Read vim docs
+Read fish docs
+Read R stdlib and tidyverse docs
+Touch up python stdlib notes from rst
 
 # Loose notes
 

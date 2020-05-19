@@ -1,0 +1,5 @@
+[Home page](https://ranger.github.io/documentation.html):
+Links to the GH repo and README.md, the source code pydocs, doc/* (i.e., list of man pages),
+the GH Wiki/FAQ/use guide/examples. All of these resources are excellent.
+
+[ranger.vim](vim_ranger)
