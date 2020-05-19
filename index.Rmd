@@ -28,6 +28,10 @@ Chair should ship on 22nd and arrive on 27th
 
 ## Ranger
 
+Find a way to commit and retrieve ranger bookmark files for different host
+systems. Maybe place them in a directory that ranger doesn't expect and move
+them into place with a script.
+
 Improve custom <cr>. Currently it works for files, but it should call move
 right=1 for directories. This should be possible:
 map <cr> eval <python-expr>,
