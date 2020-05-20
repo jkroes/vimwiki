@@ -46,6 +46,11 @@ calls ranger, rather than having to toggle a terminal, enter ranger, potentially
 exit the terminal window. In other words, so you don't have to rely on
 unreliable terminal window toggling behavior.
 
+Potential rc.confg hack: Set g:floatterm_open_command to something other than
+edit for c-x, c-v, and c-t. Then the floaterm ranger wrapper should execute
+whatever command the variable is set to. Then at the end of the shortcut,
+attempt to open the files (move right=1?)
+
 ## Neoterm
 
 Toggling seems to simply delete the terminal window, rather than the terminal

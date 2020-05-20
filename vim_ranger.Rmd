@@ -27,8 +27,8 @@ If the path isn't a directory, RangerMagic returns. If netrw was called
 instead of a ranger command, the edit command is chosen. A temporary file is
 made. A flag (l:choose_arg) is set to 'choosedir' for the CD commands and
 'choosefiles' otherwise. These are ranger args. Both write to a targetfile. The
-former writes the last visited directory when ranger exits, the latter one or
-more selected files when ranger exits--which also happens when a file is opened
+former writes the last visited directory when ranger exits (:q), the latter one
+or more selected files when ranger exits, which is when a file is opened
 from within ranger.  Using printf, the command line options to ranger are built
 such that the tempfile is this targetfile and ranger opens at the aforementioned
 path. Then one of two functions is called depending on whether you're using vim
