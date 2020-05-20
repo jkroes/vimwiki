@@ -3,3 +3,20 @@ Links to the GH repo and README.md, the source code pydocs, doc/* (i.e., list of
 the GH Wiki/FAQ/use guide/examples. All of these resources are excellent.
 
 [ranger.vim](vim_ranger)
+
+# TODO
+
+    * [X] Find a way to commit and retrieve ranger bookmark files for different host
+    systems. Maybe place them in a directory that ranger doesn't expect and move
+    them into place with a script.
+
+    * [X] Find a way to use ranger.vim to perform multiple actions with a single
+      function to invoke ranger; i.e., use nvr bindings with ranger
+        * [X] No need. vim-floaterm provides a ranger wrapper that uses a
+          configurable open action variable. I found terminal mappings that
+          work, though I would have preferred an nvr solution.
+
+    * [ ] Figure out why your nvr mappings only partially worked with floaterm.
+      See the commented code, TODO, etc. in rc.conf. If you need to mix ranger
+      and shell code, use an eval keybinding that can tap into the ranger Python
+      API and call external shell commands. See the Wiki on keybindings

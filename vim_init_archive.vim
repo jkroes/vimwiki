@@ -6,6 +6,9 @@ call plug#begin()
 Plug 'dracula/vim', {'as':'dracula'}
 Plug 'rakr/vim-one'
 
+" Simple example of the floating window API
+" Plug 'Kraust/floater.nvim'
+
 " Emacs-like plugins
 Plug 'liuchengxu/vim-which-key'
 Plug 'sunaku/vim-shortcut'
