@@ -4,6 +4,10 @@ title: An Exercise in (F)utility
 
 [Vim](vim)
 
+[CLI Utilities](CLI Utilities)
+
+[fish shell](fish shell)
+
 [Ranger](ranger)
 
 [Git](git)

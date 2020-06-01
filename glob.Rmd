@@ -1,0 +1,28 @@
+# Glob expansions (fish)
+
+*: expands to any string without a /, including empty string
+
+**: expands to any string (i.e., recurses into subdirectories), including empty string
+Note that, unlike other shells, `**\/*.fish` will match files only in
+subdirectories while `**.fish` will match in the  current and subdirectories
+
+?: any single char except / (if qmark-noglob is disabled)
+
+Exception: Wildcards do not match leading periods, so dotfiles and directories
+can only be matched against a globbed string if it begins with `.`.
+
+# Glob rules
+
+All globs are implicitly anchored at the start and end
+
+Unquoted globs are expanded.
+
+A single globbed string is expanded to all matching filenames.
+
+Expanded filenames are preserved as a single word, even if whitespace is present
+in the filename.
+
+# References
+
+https://mywiki.wooledge.org/glob (bash)
+https://fishshell.com/docs/current/ (fish)

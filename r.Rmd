@@ -4,6 +4,8 @@ title: "R"
 
 # Topics
 
+[Rmarkdown](r_rmarkdown)
+
 # Packages
 
 [ggplot](R_ggplot)
