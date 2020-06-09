@@ -2,6 +2,8 @@
 title: An Exercise in (F)utility
 ---
 
+[Scratch](scratch)
+
 [Vim](vim)
 
 [CLI Utilities](CLI Utilities)
