@@ -5,7 +5,7 @@ title: "R"
 # Topics
 
 [Rmarkdown](r_rmarkdown)
-
+[Installation](r_installation)
 # Packages
 
 [ggplot](R_ggplot)

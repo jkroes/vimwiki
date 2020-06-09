@@ -1,0 +1,7 @@
+# Random notes
+
+R_start_libs determines which packages' objects can be autocompleted prior to
+loading the package. In contrast, library(...) will not offer a package as an
+autocompletion until it has been loaded at least once in an nvim-R session.
+E.g., library(tidyverse) subsequently enables completion of tidyverse, dplyr,
+purrr, and the other user packages within tidyverse.

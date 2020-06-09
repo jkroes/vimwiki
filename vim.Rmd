@@ -7,6 +7,8 @@ title: "Vim"
 
 # Topics
 
+[Windows 10](vim_Windows10)
+
 [Options](vim_options)
 
 [Mapping](vim_mapping)
@@ -24,6 +26,8 @@ title: "Vim"
 [Vimwiki](vim_vimwiki)
 
 [neoterm](vim_neoterm)
+
+[nvim r](nvim-r)
 
 # Resources
 

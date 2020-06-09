@@ -1,0 +1,3 @@
+Using Mobaxterm, to enable <BS> uncheck
+Settings>Configuration>Terminal>Backsapce sends ^H. You'll know this is disabled
+when you can navigate vimwiki with <BS>.
