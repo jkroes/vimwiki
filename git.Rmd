@@ -228,17 +228,18 @@ git push                    Update remote using local refs, while sending
 
 ## Clone
 
-git clone <repo> <dir>  Clone repository located at <repo> to a directory named
+git clone
+    -o <name>           Change the remote name (`origin` by default).
+    --bare              Create a bare/remote repository from
+                        an existing repository This is roughly (not exactly)
+                        equivalent to `cp -Rf <repo>/.git <dirname>.git`. It is
+                        traditional for <dir> to have a `.git` suffix.
+    <repo> <dir>        Clone repository located at <repo> to a directory named
                         after the repository. Creates a remote named origin
                         pointing to the repository. Sets origin/master as the
                         upstream branch for master such that git push and pull
                         on master use origin/master by default. If <dir> is
                         omitted, a dir is created from the repository name.
-    -o                  Change the remote name (`origin` by default).
-    --bare              Create a bare/remote repository from
-                        an existing repository This is roughly (not exactly)
-                        equivalent to `cp -Rf <repo>/.git <dirname>.git`. It is
-                        traditional for <dir> to have a `.git` suffix.
 ## Tag
 
 git tag                     List all tags

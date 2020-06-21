@@ -22,10 +22,6 @@ title: An Exercise in (F)utility
 
 # TODO
 
-I think I deleted my todo list by accidend on 5/15/20... Fuck it
-Find the excellent lsp viml completion package whatever it was
-
-
 ## Personal
 
 Order tests from sutter

@@ -9,11 +9,23 @@
 ## Task List
 
 ### Short-term
-    * [ ] Presentation on evaluation database and how we could make it work for
-      Maziar and Minh.
-    * [ ] Finalize annual report
-        * [ ] Respond to public comments
-            * [ ] Read past rulemakings for examples of substance and form
+    * [.] Evaluation database
+        * [X] Presentation on evaluation database and how we could make it work for
+          Maziar and Minh.
+        * [ ] Minh suggests including all excluded fields except for reviewer title.
+          Conclusion and discussion will still be part of the
+          comment_without_date variable.
+        * [ ] Minh and Maziar are looking into how to link forms together and
+          how to link them to a database; e.g., Access
+    * [.] Finalize annual report
+        * [O] Respond to public comments
+            * [X] Read responses to comments from previous reports
+                * [X] 2007, Appendix 5
+                * [X] 2010, Appendix 4
+            * [X] Read OAL guidance on public comments
+            * [X] Respond to comments from PREC committee presentation,
+              available on Youtube as of 6/3/20
+            * [ ] Respond to written comments
         * [ ] Check hypothetical emissions
             * [ ] Does annual report script use lbs AI or product?
             * [ ] What about past master workbooks?
@@ -21,13 +33,19 @@
         * [ ] Archive any folders that have changed
         * [ ] Did I document the issues with the ARB submission in the
           procedures? I think I added a README file. See 4/28 email
-    * [ ] Data submission to ARB
-        * [ ] Complete steps in procedureal document
+    * [o] Data submission to ARB
+        * [X] Complete steps in procedureal document
         * [ ] Burn to CD
         * [ ] Submit to ARB
-        * [ ] Update procedural document
-    * [ ] Add git bare repo to serve invnetory scripts.
-    * [ ] Add git tag for each inv run
+        * [X] Update procedural document
+    * [.] VCS for SAS scripts
+        * [X] Add git bare repo to serve invnetory scripts.
+        * [ ] Add git bare repo for annual report scripts and those used to make
+          script input datasets.
+        * [ ] Reinstall Git for Windows and move repo to A:
+        * [ ] Add instructions for using repo
+        * [ ] Add tags for each inventory run (e.g., 2018PrelimDraft,
+          2019AnnualFinal)
     * [ ] Preliminary report
         * [ ] Conversion to rmarkdown
             * [ ] Make annual report code modular through source() or child
@@ -48,6 +66,7 @@
 
 ### Long-term
 
+    * Convert inventory guidelines to markdown and version control
     * Script rewrites
         * Topics
             * Unadjusted emissions
