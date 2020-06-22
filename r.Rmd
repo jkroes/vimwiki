@@ -8,7 +8,7 @@ title: "R"
 [Installation](r_installation)
 # Packages
 
-[ggplot](R_ggplot)
+[ggplot](r_ggplot)
 
 # Resources
 
