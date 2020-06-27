@@ -10,6 +10,15 @@ title: "R"
 [Installation](r_installation)
 # Packages
 
-[ggplot](R_ggplot)
+[ggplot](r_ggplot)
 
 # Resources
+
+[R-Project](https://www.r-project.org)
+    [Getting Help](https://www.r-project.org/help.html)
+[CRAN](https://cran.r-project.org/index.html)
+    [Manuals](https://cran.r-project.org/manuals.html)
+    [FAQ](https://cran.r-project.org/faqs.html)
+    [R Joural](https://journal.r-project.org)
+    [Contributed Packages](https://cran.r-project.org/web/packages/index.html)
+        [Packages by Topic](https://cran.r-project.org/web/views/)
