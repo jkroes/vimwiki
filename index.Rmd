@@ -2,7 +2,11 @@
 title: An Exercise in (F)utility
 ---
 
+[Cheat](cheat)
+
 [Scratch](scratch)
+
+[Access](microsoft_access)
 
 [Vim](vim)
 

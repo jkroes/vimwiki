@@ -9,14 +9,20 @@
 ## Task List
 
 ### Short-term
-    * [.] Evaluation database
-        * [X] Presentation on evaluation database and how we could make it work for
-          Maziar and Minh.
-        * [ ] Minh suggests including all excluded fields except for reviewer title.
-          Conclusion and discussion will still be part of the
-          comment_without_date variable.
-        * [ ] Minh and Maziar are looking into how to link forms together and
-          how to link them to a database; e.g., Access
+    * [O] Evaluation database
+        * [X] Presentation on evaluation database and how we could make it work
+          for Maziar and Minh.
+            * [X] Minh suggests including all excluded fields except for
+              reviewer title.
+        * [X] RShiny application for data entry and retrieval
+        * [X] Rmarkdown evaluation forms
+            * [X] Long
+            * [X] Short
+        * [ ] Process for adding RShiny data to evaluation database
+            * [ ] Selecting only the most recent record for repeat submissions.
+            No automated process. Will need to write a custom import script
+            identifying the desired rows each time a report is written. Or
+            manually copy, though the former is reproducible.
     * [.] Finalize annual report
         * [O] Respond to public comments
             * [X] Read responses to comments from previous reports
@@ -25,9 +31,11 @@
             * [X] Read OAL guidance on public comments
             * [X] Respond to comments from PREC committee presentation,
               available on Youtube as of 6/3/20
-            * [ ] Respond to written comments
-        * [ ] Check hypothetical emissions
-            * [ ] Does annual report script use lbs AI or product?
+            * [X] Respond to written comments
+            * [ ] Meet with management, then revise Edgar's comments.
+        * [o] Check hypothetical emissions
+            * [X] Does annual report script use lbs AI or product?
+                * [X] It uses lbs AI in Rmd report
             * [ ] What about past master workbooks?
         * [ ] VOC listserv / stakeholder email
         * [ ] Archive any folders that have changed

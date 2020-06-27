@@ -11,6 +11,11 @@ On a line of only dashes, type Vr=
 :g/^-\+$/norm Vr=
 ```
 
+With an R function and its named arguments selected, remove the names and move
+arguments to the same line:
+```
+:'<,>'s/\n\s*[a-zA-Z_*]* =//
+```
 
 
 
