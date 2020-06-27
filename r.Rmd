@@ -2,10 +2,17 @@
 title: "R"
 ---
 
+To render cheatsheet, ~/Projects/cheatR/mkcheat.R -i RCheat.csv -t RCheat
+TODO: Make fswatc work
+    fswatch -e ".*" -i '\\.csv$' ~/vimwiki
+
+[RCheat](file:RCheat.html)
+
 # Topics
 
 [Rmarkdown](r_rmarkdown)
 [Installation](r_installation)
+
 # Packages
 
 [ggplot](r_ggplot)

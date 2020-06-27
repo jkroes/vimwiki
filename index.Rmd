@@ -24,9 +24,13 @@ title: An Exercise in (F)utility
 
 ## Personal
 
-Order tests from sutter
-Ask about decreased student loan payments (before covid-19 deferment began)
-Chair should ship on 22nd and arrive on 27th
+- Wait for PCP to contact you about MRI for shoulder.
+- Ask about decreased student loan payments (before covid-19 deferment began)
+- Desk lamp and footrest from Uplift Desk
+
+# Work
+
+- Install vimium for Chrome. Study vimium.
 
 ## Neoterm
 
@@ -79,6 +83,7 @@ HTML previewers for this website?
 
     * elinks
     * https://browsersync.io
+        * browser-sync start --server --index <file>.html
     * https://github.com/turbio/bracey.vim
     * https://github.com/greyblake/vim-preview
 
