@@ -4,6 +4,8 @@ title: "R"
 
 # Topics
 
+[Startup](r_startup)
+[Rshiny](r_rshiny)
 [Rmarkdown](r_rmarkdown)
 [Installation](r_installation)
 # Packages

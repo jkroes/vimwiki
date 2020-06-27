@@ -1,0 +1,85 @@
+# nvim-R
+
+## R console
+
+;rf     Start R
+;rq     Close R
+;rr     Clear console
+;rm     rm() and clear console
+;rd     setwd()
+;:      Equivalent to ':RSend '
+
+:Rstop          Interrupt R
+
+
+## R objects
+
+;rp     print()
+;rn     names()
+;rv     View() in new tab
+;rt     str()
+;ra     Function signature ("arguments")
+;rh     help() (same as K)
+:Rhelp
+;re     example()
+;rs     summary()
+;rg     plot()
+
+## Knit
+
+;kn     Knit
+;kb     Knit, bibtex, and PDF
+;kp     Knit and PDF
+;kh     Knit and HTML
+;kr     Markdown render
+;ks     Spin (knitting .R files!)
+
+Test these!!!
+;op     Open PDF
+;gp
+;gt
+==      Indent line
+=       Indent selection
+;;      Add align right comment
+;gn     Go next chunk
+;gp     Go previous chunk
+
+# Object browser
+
+;ro     Toggle
+;r=     Expand all lists
+;r-     Collapse all lists
+ENTER   Toggle b/w library and object browsers
+
+
+## Evaluation
+
+Non-line evaluation consists of ;<object><action>
+
+### Object key
+
+a(ll, or file)
+b(lock of lines between two marks)
+c(hunk)
+f(unction)
+m(otion), followed by any motion
+s(election)
+p(aragraph)
+
+### Non-motion action key
+
+<first-letter> (current)
+e(cho)
+d(own, except for file)
+a (echo and down, except for file)
+h (all chunks above)
+o(output insertion in tab for selection, or in .Rout for file)
+
+### Lines
+
+;l(ine)
+;d(own)
+;q (newline)
+;o(utput insertion as comment)
+;su (all lines above)
+
