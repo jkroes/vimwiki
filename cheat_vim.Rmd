@@ -1,5 +1,18 @@
 # nvim-R
 
+
+"TODO: Test these!!!
+:Rformat calls formatR::tidy_source() on selection or buffer
+    - Configurable autoformatter on save?
+
+## Editing
+
+==      Indent line
+        NOTE: Only works on non-blank lines
+=       Indent selection
+;;      Add align right comment
+:Rinsert <cmd>      Insert output from command (up to 5012 chars)
+
 ## R console
 
 ;rf     Start R
@@ -11,46 +24,29 @@
 
 :Rstop          Interrupt R
 
-
 ## R objects
 
 ;rp     print()
 ;rn     names()
-;rv     View() in new tab
+;rv     View() data.frame in new tab
+;vs                      ... horizontal split
+;vv                      ... vertical split
 ;rt     str()
 ;ra     Function signature ("arguments")
-;rh     help() (same as K)
-:Rhelp
+;rh     help() (currently supplanted by Coc_show_documentation)
+:Rh[elp]
 ;re     example()
 ;rs     summary()
 ;rg     plot()
-
-## Knit
-
-;kn     Knit
-;kb     Knit, bibtex, and PDF
-;kp     Knit and PDF
-;kh     Knit and HTML
-;kr     Markdown render
-;ks     Spin (knitting .R files!)
-
-Test these!!!
-;op     Open PDF
-;gp
-;gt
-==      Indent line
-=       Indent selection
-;;      Add align right comment
-;gn     Go next chunk
-;gp     Go previous chunk
 
 # Object browser
 
 ;ro     Toggle
 ;r=     Expand all lists
 ;r-     Collapse all lists
-ENTER   Toggle b/w library and object browsers
-
+ENTER   Toggle b/w Library and .GlobalEnv views when cursor is on first line of
+        object browser, expand/collapse lists under cursor in .GlobalEnv, or
+        view objects within a library
 
 ## Evaluation
 
@@ -72,8 +68,9 @@ p(aragraph)
 e(cho)
 d(own, except for file)
 a (echo and down, except for file)
-h (all chunks above)
-o(output insertion in tab for selection, or in .Rout for file)
+h (all chunks above up to current line)
+o(output insertion in tab for selection, or in .Rout for file depending on
+  `R_routnotab`)
 
 ### Lines
 
@@ -83,3 +80,109 @@ o(output insertion in tab for selection, or in .Rout for file)
 ;o(utput insertion as comment)
 ;su (all lines above)
 
+
+## Help
+
+;rh and ;rp shows class-specific help for functions based on the first argument
+passed to a function (e.g., summary(lm(...)) vs summary(rnorm(...)), but only if
+the first argument is positional and not named!
+
+## Rmd
+
+;gn     Goto next chunk
+;gN     Goto previous chunk
+
+### Knit
+
+;kr     Markdown render default output
+;kn     Knit (i.e., to .md)
+;ks     Spin (knitting .R files!)
+
+### LaTeX
+
+NOTE: These may only work for Rnoweb documents. They don't work for Rmd.
+TODO: Find a way to make Skim or Zathura work with .Rmd.
+https://github.com/jalvesaq/Nvim-R/blob/77a5c557921d6b780f5ba19c2133b603763711f6/R/skim.vim
+;op     Open PDF
+;gp     Search forward synctex
+;gt     Go to latex synctex
+
+### Child documents
+
+When the cursor is on an R chunk's header with the child option, sending a line
+of code will knit the child document.
+
+## Tags
+
+RBuildTags isn't needed with LSP, since LSP (at least in coc.nvim) seems capable
+of recognizing R objects and suggesting them for completion. In fact, completing
+a function in R auto-adds parentheses for the call.
+
+## Comments
+
+I rely on NERDCommenter for comments; however, the add align right comment
+feature could be useful for inline comments with R.
+
+## Windows Layout Saving
+
+nvim-r saves window layouts on ;rq, and restores them on ;rf. This can be
+disabled via R_save_win_pos and R_arrange_windows. To force a certain layout
+always, enable these variables, arrange the windows in the desired layout, quit
+R, then disable only R_save_win_pos.
+
+## R help
+
+Currently coc.nvim's floating window help is used to invoke R help. This means
+that the keybindings that are normally open in R's help windows are not active
+(e.g., ;rh to jump to another help topic). TODO: Enable nvim-r in coc.nvim
+floating window or set nvim-r's help window to float and scroll as in coc.nvim
+
+## Blocks
+
+See |Nvim-R-showmarks|
+
+## About PDF syncing
+
+MacOS and Linux require different PDF viewers in nvim-r. MacOS uses Skim while
+Linux uses zathura. If `R_openpdf=1` Skim will update the pdf in the same
+application instance. This is not quite live preview, but it does remove the
+necessity of opening the file yourself. Note too that forward (Rmd -> PDF) and
+backward (PDF->RMD) synchronization--i.e., navigation--may not be possible with
+RMD files, though nvim-R suggests it is possible with .Rnw files.
+
+Here is an analysis of the function calls produced by ;kr on MacOS:
+
+;kr -> RMakeRMD(t)
+    RSetPDFViewer()
+        Sources g:rplugin.home/R/g:rplugin.pdfviewer
+        rplugin.pdfviewer -> Skim on MacOS
+            Skim.vim
+                ROpenPDF2(<abspath>)
+                SyncTeX_forward2 (requires macvim-skim?)
+    For t="default":
+        Constructs nvim.interlace.rmd with current file, file's dir, and
+        envir=g:R_rmd_environment
+        This is sent to R to execute
+        nvim.interlace.rmd is an nvimcom wrapper around rmarkdown::render. At
+        the end of this R func's definition, ROpenDoc(<output-path>) is sent to
+        be executed by nvim:
+            ROpenDoc(<path-to-rendered-doc>)
+                If the path ends in .pdf (i.e., default output was
+                pdf_document), then ROpenPDF is invoked.
+                    ROpenPDF eventually calls ROpenPDF2, which was defined back
+                    by RSetPDFViewer. This launches Skim.
+                For latex documents:
+                    This function simply sends a warning about unknown
+                    filetypes. I guess it doesn't know how to open latex. For
+                    this, see R_latexcmd. Figure out how it's invoked. See also
+                    https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown
+                    and |R_latexcmd|
+                Here is the Pandoc call produced by ;kr:
+
+```
+/usr/local/bin/pandoc +RTS -K512m -RTS test.utf8.md --to latex --from markdown+autolink_bare_uris+tex_
+math_single_backslash --output test.tex --self-contained --highlight-style tango --pdf-engine pdflatex
+ --variable graphics --lua-filter /usr/local/lib/R/4.0/site-library/rmarkdown/rmd/lua/pagebreak.lua --
+lua-filter /usr/local/lib/R/4.0/site-library/rmarkdown/rmd/lua/latex-div.lua --variable 'geometry:marg
+in=1in'
+```

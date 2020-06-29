@@ -23,6 +23,25 @@ Plug 'sunaku/vim-shortcut'
 " Compare to semantic-highlight.vim
 " The source for UpdateRemotePlugins isn't loaded yet:
 " Plug 'numirias/semshi', { 'do': 'nvim +UpdateRemotePlugins +qall' }
+
+
+" Completion
+" TODO: ncm-R not working on MacOS
+" Plug 'ncm2/ncm2'
+    " RStudio-like completion
+    " Plug 'gaalcaras/ncm-R'
+        " Plug 'roxma/nvim-yarp'
+    " Python
+    " Plug 'ncm2/ncm2-jedi'
+    " Syntax files
+    " Plug 'ncm2/ncm2-syntax'
+    " Plug 'Shougo/neco-syntax'
+    " Filepaths
+    " Plug 'ncm2/ncm2-path'
+    " GitHub repos
+    " Plug 'ncm2/ncm2-github'
+    " Words from other buffers
+    " Plug 'ncm2/ncm2-bufword'
 call plug#end()
 
 " vim-which-key: Display key bindings mapped to (local) leader
@@ -249,3 +268,59 @@ function! Test(...) range
 endfunction
 
 map <localleader>z :call Test()<cr>
+
+
+if has_key(g:plugs, 'ncm-R')
+    " Equiv. to CocConfig's 'suggest.autoTrigger': always
+    let g:ncm2#auto_popup = 1
+    "Equiv. to CocConfig's 'suggest.minTriggerInputLength': 1
+    let g:ncm2#complete_length = 1
+
+    " Prevent automatic selection and text injection into current line, and show
+    " popup even for only one match
+    set completeopt=noinsert,menuone,noselect
+
+    " Enable ncm2 for R
+    autocmd BufEnter *.R,*.Rmd call ncm2#enable_for_buffer()
+
+    autocmd FileType r,rmd call Configure_ncm2_filetypes()
+
+    function! Configure_ncm2_filetypes()
+        " Unlike coc.nvim, the popup appears by default (at least in R) when
+        " you're adjacent to text even after you've moved away from text,
+        " closing the popup. Because of this, the function to check for
+        " backspace isn't necessary.
+        inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+        " Use shift-tab to navigate up the completion menu or backspace.
+        " This differs somewhat from coc.nvim, b/c the popup appears adjacent to
+        " text automatically. So backspace is only possible across empty space.
+        inoremap <buffer><expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+        " The ncm2 README claims that:
+        "     When the <Enter> key is pressed while the popup menu is visible, it
+        "     only hides the menu. Use this mapping to close the menu and also start
+        "     a new line.
+        " I found this to be inverted: By default, the popup hid the menu and
+        " inserted a new line. I wanted the behavior claimed by the README, so I
+        " modified the mapping for the true condition. Then modified it for the
+        " false condition to more closely resemble the coc.nvim mapping.
+        "
+        " If you have issues, the Wiki included a link to this issue:
+        " https://github.com/ncm2/ncm2/issues/163
+        " Check it out for insights if needed.
+        inoremap <buffer><expr> <CR> (pumvisible() ? "\<c-y>" : "\<C-g>u\<CR>")
+        "More or less equivalent to Show_coc_documentation
+        nmap <buffer> K <localleader>rh
+    endfunction
+endif
+
+
+if has_key(g:plugs, 'coc.nvim')
+    " Extensions to install
+    " autocmd VimEnter * CocInstall coc-python
+    "" Enable highlighting references and other (?) stuff
+    " autocmd VimEnter * CocInstall coc-highlight
+    " Without this I can't see reference highlights...
+    " hi link CocHighlightText Search
+    " Highlight references on cursor hold
+    " autocmd CursorHold * call CocActionAsync('highlight')
+endif
