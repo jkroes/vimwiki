@@ -21,6 +21,8 @@ title: "Vim"
 
 # Packages
 
+[nvim r](vim_nvim-r)
+
 [ranger.vim](vim_ranger)
 
 [Vimwiki](vim_vimwiki)

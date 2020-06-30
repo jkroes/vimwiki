@@ -1,0 +1,67 @@
+## Tags
+
+RBuildTags isn't needed with LSP, since LSP (at least in coc.nvim) seems capable
+of recognizing R objects and suggesting them for completion. In fact, completing
+a function in R auto-adds parentheses for the call.
+
+## Comments
+
+I rely on NERDCommenter for comments; however, the add align right comment
+feature could be useful for inline comments with R.
+
+## Windows Layout Saving
+
+nvim-r saves window layouts on ;rq, and restores them on ;rf. This can be
+disabled via R_save_win_pos and R_arrange_windows. To force a certain layout
+always, enable these variables, arrange the windows in the desired layout, quit
+R, then disable only R_save_win_pos.
+
+## Blocks
+
+See |Nvim-R-showmarks|
+
+## About PDF syncing
+
+MacOS and Linux require different PDF viewers in nvim-r. MacOS uses Skim while
+Linux uses zathura. If `R_openpdf=1` Skim will update the pdf in the same
+application instance. This is not quite live preview, but it does remove the
+necessity of opening the file yourself. Note too that forward (Rmd -> PDF) and
+backward (PDF->RMD) synchronization--i.e., navigation--may not be possible with
+RMD files, though nvim-R suggests it is possible with .Rnw files.
+
+Here is an analysis of the function calls produced by ;kr on MacOS:
+
+;kr -> RMakeRMD(t)
+    RSetPDFViewer()
+        Sources g:rplugin.home/R/g:rplugin.pdfviewer
+        rplugin.pdfviewer -> Skim on MacOS
+            Skim.vim
+                ROpenPDF2(<abspath>)
+                SyncTeX_forward2 (requires macvim-skim?)
+    For t="default":
+        Constructs nvim.interlace.rmd with current file, file's dir, and
+        envir=g:R_rmd_environment
+        This is sent to R to execute
+        nvim.interlace.rmd is an nvimcom wrapper around rmarkdown::render. At
+        the end of this R func's definition, ROpenDoc(<output-path>) is sent to
+        be executed by nvim:
+            ROpenDoc(<path-to-rendered-doc>)
+                If the path ends in .pdf (i.e., default output was
+                pdf_document), then ROpenPDF is invoked.
+                    ROpenPDF eventually calls ROpenPDF2, which was defined back
+                    by RSetPDFViewer. This launches Skim.
+                For latex documents:
+                    This function simply sends a warning about unknown
+                    filetypes. I guess it doesn't know how to open latex. For
+                    this, see R_latexcmd. Figure out how it's invoked. See also
+                    https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown
+                    and |R_latexcmd|
+                Here is the Pandoc call produced by ;kr:
+
+```
+/usr/local/bin/pandoc +RTS -K512m -RTS test.utf8.md --to latex --from markdown+autolink_bare_uris+tex_
+math_single_backslash --output test.tex --self-contained --highlight-style tango --pdf-engine pdflatex
+ --variable graphics --lua-filter /usr/local/lib/R/4.0/site-library/rmarkdown/rmd/lua/pagebreak.lua --
+lua-filter /usr/local/lib/R/4.0/site-library/rmarkdown/rmd/lua/latex-div.lua --variable 'geometry:marg
+in=1in'
+```
