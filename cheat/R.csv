@@ -1,0 +1,45 @@
+Code,Description
+*Help,
+help(),Help on help
+"help(topic = help)
+?""+""",Help on object
+"help(filter, package = dplyr)",Help on unloaded object
+help(package = dplyr),"Package index (HTML, including links within RStudio, to functions, vignettes, etc.)"
+library(help = dplyr),Package index (text-based)
+help(dplyr),Help on package
+example(filter),Run example code from object's help
+browseVignettes(),List all packages' vignettes
+"browseVignettes(""dplyr"")",View package vignettes
+demo(),List all packages' demos
+"demo(""graphics"")",View demo
+"apropos(""list"")",Search for objects by substring/regex
+"find(""within.list"")",Find source for objects
+*Startup,
+**Files,
+NOTE,"Lowercase ""home"" below refers to HOME on Unix systems. On Windows, it is the first of R_USER, HOME, then several Windows-specific directories. Can be found via normalizePath(""~""). See https://cran.r-project.org/bin/windows/base/rw-FAQ.html#What-are-HOME-and-working-directories_003f. "
+Site environ,"Contains environment variables for R. Searched for in R_ENVIRON, then R_HOME/etc/Renviron.site. Disabled by --no-environ.  "
+User environ,"Searched for in R_ENVIRON_USER, getwd()/.Renviron, then home/.Renviron. Disabled by --no-environ. "
+Unix environ,"Unix systems also contain R_HOME/etc/Renviron, which should not be modified. Its settings can be overwritten by site and user environ files. Do not confuse this with the site environ file."
+Site profile,"Contains R code to run on startup. Searched for in R_PROFILE, then R_HOME/etc/Rprofile.site. Disabled by --no-site-file."
+User profile,"Searched for in R_PROFILE_USER, getwd()/.Rprofile, then home/.Rprofile. Disabled by --no-init-file."
+Data,Disabled by --no-restore-data.
+History,Disabled by --no-restore-history.
+**Functions,
+.First,"A function that can be defined in an earlier step and will be executed between loading data and loading history, before the script is launched."
+base::.First.sys,"Attaches packages listed in options(""defaultPackages"")."
+*Packages,
+**Functions,
+R.home(),The root installation path of the current R instance. Seems to be set to the same value as R_HOME.
+.libPaths(),"Get or set the library search path. By default consists of c(.Library.site, .Library). The first element of the vector returned by .libPaths() will be used as the default installation location (i.e., unless overridden) of the current R instance. R_LIBS and R_LIBS_USER will also be prepended to the library search path if the directories pointed to by them exist. Passing a new vector as the sole argument of this function will result in a new search path that is the output of unique(new, .Library.site, .Library)"
+**Constants,
+.Library.site,"""site-library"" subdirectory of R_HOME by default, which may not exist. Can be set via $R_LIBS_SITE, though the environment variable is not needed for .Library.site to have an initial value."
+.Library,"""library"" subdirectory of R_HOME by default"
+**Environment,
+R_LIBS,"Unset by default. If set and path exists, prepended to .libPaths() at startup."
+R_LIBS_USER,"Set to a platform-specific path by default, which may not exist. If path exists, inserted between R_LIBS and the default value of .libPaths() at startup"
+R_LIBS_SITE,Unset by default. Can be used to set .Library.site at startup.
+*Filepaths,
+path.expand(),"Expands ~[user] into user's home directory. Note that if user is omitted, current user is assumed."
+normalizePath(),"Calls path.expand on path but also resolves ., .., and symlinks"
+dir.exists,
+dir.create,

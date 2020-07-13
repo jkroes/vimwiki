@@ -1,3 +1,9 @@
 # List of Cheatsheets
 
 [vim](cheat_vim)
+
+# Vimium Instructions
+
+To enable Vimium navigation on local files, click the triple dots in the upper
+right of Chrome > More Tools > Extensions > On Vimium, click Details > under
+Site Access, enable the slider to the right of "Allow access to file URLs"
