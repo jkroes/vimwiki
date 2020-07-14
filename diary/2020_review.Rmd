@@ -1,10 +1,6 @@
-* Prepped for annual review with Maziar.
-* Task list
-    * Copied Microsoft Planner to diary index
-    * Updated task lists on index
-    * Reviewed work summary emails
+# 2020-05-19
 
-# Summary of annual performance review
+## Summary of annual performance review
 
 Minh would like to involve me in ARCGIS. He can send me ARB shapefiles for NAAs
 and Maziar has an R script that sounds like it will map NAAs to counties. I may
@@ -15,9 +11,6 @@ inventory, so I will have practice working with others on a project I am
 familiar with. Maziar has noticed that I am easily frustrated when asked to work
 on unfamiliar projects, especially with so much other work to do already. He has
 avoided new, outside assignments.
-
-TODO: Put a PPT presentaiton together on an evaluation database
-TODO: Attach a vfile link to the PDF review they sent in advance of the meeting.
 
 ## Annual performance pre-review Q&A
 

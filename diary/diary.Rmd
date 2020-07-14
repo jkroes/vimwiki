@@ -1,10 +1,13 @@
-# Diary
+# Project Diary
 
-## 2020
+NOTE: Attachments are stored in D:/work_diary/
 
-### May
-    * [2020-05-19](2020-05-19)
-
+* Annual reviews
+    * [2020 review](2020_review)
+* Shiny
+    * [PAMR visualization](PAMR_viz)
+    * Hydrus studies
+    * [TGA evaluations](shiny_tga)
 
 ## Task List
 
